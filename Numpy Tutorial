@@ -1,0 +1,200 @@
+import numpy as np
+
+# EVERY ARRAY GOES IN FORM OF LIST
+ar1 = np.array(['a', 'b', 'c', 'd'])
+ar2 = np.array([[1, 2, 3], ['a', 'b', 'c']])
+ar3 = np.array([[[1, 2, 3, 4, 5], [6, 7, 8, 9, 10]], [['a', 'b', 'c', 'd', 'e'], ['f', 'g', 'h', 'i', 'j']]])
+
+# PRINTING VALUES USING INDEX NUMBER
+# print(ar1[2])
+
+# EVALUATION OF NUMBER OF DIMENSION
+# print(f"DIMENSION AR1: {ar1.ndim}")
+# print(f"DIMENSION AR2: {ar2.ndim}")
+# print(f"DIMENSION AR3: {ar3.ndim}")
+
+# EVALUATION OF SHAPE
+# print(f"SHAPE AR1: {ar1.shape}")
+# print(f"SHAPE AR2: {ar2.shape}")
+# print(f"SHAPE AR3: {ar3.shape}")
+
+# DATA TYPES IN NUMPY
+# Native numpy data types are Unicord string i.e without explicitly defining the data types
+# of the values in our array. This is represented by "U" followed by the highest number of characters in each value.
+ar4 = np.array(['a', 'b'])
+# print(ar4.dtype)
+
+# MANUALLY DEFINING THE DATA TYPE OF OUR VALUES
+# 01 STRINGS
+# This is done by either passing the string 'S' or np.string_ into the "dtype=" method
+# The following digit is determined in a similar pattern
+ar5 = np.array(['ab', 'bc'], dtype=np.string_)
+# print(ar5.dtype)
+# 02 NUMBERS
+# We have the case of 'int', 'float', 'complex' followed by the memory bytes (8,16,32) assigned to these values
+arr6 = np.array([1, 2, 3])
+# print(arr6.dtype)
+arr7 = np.array([1, 2, 3], dtype=np.int16)
+# print(arr7.dtype)
+arr8 = np.array([1.4, 2, 3.5], dtype=np.complex128)
+# print(arr8.dtype)
+# print(arr8)
+
+# ARRANGE IN NUMPY
+arr9 = np.arange(90, 1105, 10)  # START, END, INTERVAL respectively
+# print(arr9)
+
+# RESHAPING AN ARRAY
+# Reshaping must always be done with a possible shaping values else we get an error
+arr10 = arr9.reshape(51, 2)
+# print(arr10)
+
+# ONES & ZEROS
+# This generates an array of ones and zeros into the shape of the array
+arr1s = np.ones((2, 2, 2))
+arr0s = np.zeros((2, 2, 2))
+# print(arr1s)
+# print(f" ")
+# print(arr0s)
+
+# FLATTEN & TRANSPOSE
+# Flatten dissolves a multidimensional array into a single dimensional array but in a specific order.
+# The default order is by row represented by the string 'C' (C++ language)
+# The other order is by column represented by the string 'F' (Fortran language)
+# print(ar3)
+# print(f" ")
+# arr3_flattened = ar3.flatten(order='F')
+# print(arr3_flattened)
+# Transpose simply switches rows to columns and vice versa
+# print(np.transpose(ar3))
+
+# CONCATENATION IN NUMPY
+# The order at which they are joined together is determined by their axis; 0 is default, 1 means row1-row1, col1-col1
+# and so on in the multidimensional array
+ar11 = np.arange(6).reshape(2, 3)
+# print(ar11)
+ar12 = np.arange(6, 12).reshape(2, 3)
+# print(ar12)
+# conctd_ar = np.concatenate((ar11, ar12), axis=1)
+# print(conctd_ar)
+
+# STACKING IN NUMPY
+# Stacking is the act of joining an array to another of the same shape in separate forms thereby creating a new
+# dimension in the main dimension
+stacked_ar = np.stack((ar11, ar12))
+# print(stacked_ar)
+# VSTASK
+# This gives the same output as concatenation on axis 0
+# print(np.vstack((ar11, ar12)))
+# HSTASK
+# This gives the same output as concatenation on axis 1
+# print(np.hstack((ar11, ar12)))
+# DSTACK
+# This type of stacking matches values with the same index and create a separate for each of them
+# print(np.dstack((ar11, ar12)))
+
+# THE ADDITION FUNCTION
+a = ["Okunlola ", "Tiamiyu "]
+b = ["Faozee", "Hammed"]
+added_lst = np.char.add(a, b)
+# print(added_lst)
+
+# THE CENTER FUNCTION
+# This counts the number of characters in the string passed into the function, compares it with the number
+# passed as well and replace the leftovers with the third argument (string) passed into it.
+centered_funct = np.char.center('Okunlola', 20, "*")
+# print(centered_funct)
+
+# CAPITALIZE, TITLE, LOWER & UPPER CASE IN NUMPY
+# print(np.char.capitalize("okunlola faozee bayo"))
+# print((np.char.title("okunlola faozee bayo")))
+# print((np.char.lower([["HI", "HELLO"], ["MORNING", "NIGHT"]])))
+# print((np.char.upper([["hi", "hello"], ["morning", "night"]])))
+
+# SPLITTING IN NUMPY
+space_split = np.char.split("My name is Okunlola Faozee")
+# print(space_split)
+line_split = np.char.splitlines("My name is Okunlola Faozee Bayo.\n I am 21 years old")
+# print(line_split)
+
+# JOIN AND REPLACE
+join = np.char.join(" ", "Okunlola")
+# print(join)
+replace = np.char.replace(" Who is in the garden?", "Who is", "Raining")
+# print(replace)
+
+# ARITHMETIC OPERATIONS IN NUMPY
+# Ensure to add either to an existing array an array with either the same shape or with a single row/column
+# In the first case, the values are added together based on corresponding indexes and in the second case,
+# each row/column are added to it based on the corresponding column/row index.
+a1 = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+# print(a1)
+# print(" ")
+a21 = np.array([1, 2, 3])
+# print(a21)
+# print(" ")
+a22 = np.array([[1], [2], [3]])
+# print(a22)
+# print(" ")
+a3 = np.array([[1, 1, 1], [2, 3, 4], [5, 6, 7]])
+# print(a3)
+# print(" ")
+# print("ADDITION")
+addition1 = np.add(a1, a21)
+addition2 = np.add(a1, a3)
+addition3 = np.add(a1, a22)
+# print(addition1)
+# print(" ")
+# print(addition2)
+# print(" ")
+# print(addition3)
+# print(" ")
+# print("SUBTRACTION")
+subtraction1 = np.subtract(a1, a21)
+subtraction2 = np.subtract(a1, a3)
+subtraction3 = np.subtract(a1, a22)
+# print(subtraction1)
+# print(" ")
+# print(subtraction2)
+# print(" ")
+# print(subtraction3)
+# The same is applicable to Multiplication & Division
+
+# SLICING
+ai = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+# print(ai[::3])
+am = np.array([[1, 2, 3, 4, 5], [6, 7, 8, 9, 10], [1, 2, 3, 4, 5], [6, 7, 8, 9, 10]])
+# print(am[::2, ::2])
+
+# ITERATING OVER AN ARRAY
+an = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+for x in np.nditer(an):
+    # print(x)
+    pass
+
+# RESIZING IN NUMPY
+resized_ar = np.resize(an, (3, 5))
+# print(resized_ar)
+
+# INTERNAL OPERATIONS IN NUMPY
+# Sum of all values in the array
+# print(resized_ar.sum())
+# Summing the columns only
+# print(resized_ar.sum(axis=0))
+# Summing the rows only
+# print(resized_ar.sum(axis=1))
+
+# STRIPPING IN NUMPY
+# This is used to strip-off or remove certain characters in our array used ONLY used to the left and right
+# When it takes one argument, it strips off the blank spaces
+# When it takes two argument, it strips off the 2nd argument passed into it in the form of string
+# This works for ordinary python lists as well as texts stored in variables
+var = "  My name is a Bayo   "
+lst = ["I am okay  "]
+arr1 = np.array(["abc is simple ", "loan is dangerous to have"])
+print(np.char.strip(arr1))
+print(np.char.strip(lst))
+print(np.char.strip(var))
+print(" ")
+print(np.char.strip(arr1, "abc is"))
+print(np.char.strip(lst, "am"))
